@@ -6,7 +6,6 @@ articleString = "";
 articles.forEach((data) => {
     console.log(data);
     articleString += data.outerHTML;
-
 });
 
 
@@ -15,6 +14,9 @@ articles.forEach((data) => {
 // fetch("http://localhost:5000");
 
 (async function(contents){
+    articles[0].querySelectorAll('a').forEach(e => {
+      e.style.background = 'red';
+    })
     try {
         console.error("--------------------------------error--------------------------------");
         const data = await postData('http://localhost:5000', { data: contents });
