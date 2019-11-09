@@ -1,0 +1,2 @@
+subjectivity_classifier/data/word_embeddings/glove.6B.50d.txt filter=lfs diff=lfs merge=lfs -text
+*.txt filter=lfs diff=lfs merge=lfs -text
