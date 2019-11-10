@@ -28,6 +28,14 @@ def test():
     # return "Hello, {escape(name)}!"
 
 
+@app.route('/test', methods=["GET", "POST"])
+def demo():
+    text = "Donald Trump is the president. I HATE donald trump. Donald Trump is a nice guy. Donald trump can suck a dick."
+    res = woot(text)
+    return res
+    # return "Hello, {escape(name)}!"
+
+
 if __name__ == '__main__':
     app.run()
 
