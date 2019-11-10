@@ -27,12 +27,17 @@ class ParseHtml:
         mark_tag = self.soup.new_tag('mark', **attributes)
         mark_tag.string = str(contents)
 
-        print(mark_tag)        
+        # print(mark_tag)        
         # return "<mark class=\""+ color +"\">" + str(data) + "</mark>"
 
     def callZach(self, data):
         # TODO
-        return data, "red"
+        if data == None:
+            return "", ""
+        print(data)
+        print()
+        print()
+        return "red"
 
 
 
