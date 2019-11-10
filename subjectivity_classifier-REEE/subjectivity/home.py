@@ -1,22 +1,24 @@
 from flask import Flask, escape, request
 from flask_cors import CORS
 
-from zachsBaby import woot
+# from zachsBaby import woot
 
 app = Flask(__name__)
 CORS(app)
 
-
+# TODO Parse json data for data: ["", "", ""]
+# TODO Send Paragraph to zachsBaby
+# 
 @app.route('/', methods=["GET", "POST"])
 def hello():
     # name = request.args.get("name", "World")
-    name = "bob"
+    print("cors request made")
+    data = "none"
     if request.method == "POST":
         data = request.data
         print(data)
-        name = data
 
-    return name
+    return data
     # return "Hello, {escape(name)}!"
 
 
