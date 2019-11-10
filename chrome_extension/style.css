@@ -1,3 +1,18 @@
-.tjf--highlight {
-     
+.underline--magical {
+    background-image: linear-gradient(120deg, red 0%, orange 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+  }
+
+.objective--highlight {
+    background: green;
+    opacity: .5;
+    color: white;
+}
+
+.subjective--highlight {
+     background: red;
+     opacity: .5;
+     color: white;
 }

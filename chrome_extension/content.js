@@ -1,30 +1,24 @@
-console.log("content loaded");
-
-
 let articles = document.querySelectorAll('article');
-articleString = "";
-articles.forEach((data) => {
-    console.log(data);
-    articleString += data.outerHTML;
+paragraphs = [];
+articles[0].forEach((data) => {
+    paragraphs.push(data)
 });
-
-
-
 
 // fetch("http://localhost:5000");
 
 (async function(contents){
-    articles[0].querySelectorAll('a').forEach(e => {
-      e.style.background = 'red';
-    })
+    contents[0].innerHtml = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
+    console.log(contents)
+    console.log(contents.map(e => e.textContent))
+    
     try {
         console.error("--------------------------------error--------------------------------");
-        const data = await postData('http://localhost:5000', { data: contents });
+        const data = await postData('http://localhost:5000', { data: contents.map(e => e.textContent) });
         console.log(data); // JSON-string from `response.json()` call
       } catch (error) {
         console.error("--------------------------------error--------------------------------");
       }
-})(articleString);
+})(paragraphs);
   
 async function postData(url = '', data = {}) {
     // Default options are marked with *
