@@ -1,13 +1,13 @@
 let articles = document.querySelectorAll('article');
 paragraphs = [];
-articles[0].forEach((data) => {
+articles[0].querySelectorAll('p').forEach((data) => {
     paragraphs.push(data)
 });
 
 // fetch("http://localhost:5000");
 
 (async function(contents){
-    contents[0].innerHtml = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
+    contents[0].innerHTML = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
     console.log(contents)
     console.log(contents.map(e => e.textContent))
     
