@@ -1,5 +1,6 @@
 from flask import Flask, escape, request
 from flask_cors import CORS
+import json
 
 # from zachsBaby import woot
 
@@ -16,7 +17,13 @@ def hello():
     data = "none"
     if request.method == "POST":
         data = request.data
-        print(data)
+        my_json = data.decode('utf8')#.replace("'", '"')
+        data = json.loads(my_json)
+        data = data["data"]
+        # s = json.dumps(data, indent=4, sort_keys=True)
+        # print(s)
+        # TODO CALL ZACHS BABY
+
 
     return data
     # return "Hello, {escape(name)}!"
