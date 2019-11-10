@@ -4,6 +4,8 @@ from gensim.models import KeyedVectors
 from model import SubjectivityPredictor
 from utils import is_subjective, convert_text_into_vector_sequence
 
+import json
+
 
 class SubjectivityClassifier(object):
     def __init__(self, model_filename, word_filename):
@@ -21,16 +23,19 @@ class SubjectivityClassifier(object):
         sentences_list = sent_tokenize(self.__sanitize_text(text))
         subjective_sentences = []
         objective_sentences = []
+        count = 0
         for sentence in sentences_list:
             sentence = self.__clean_sentence(sentence)
+            res = {"text": sentence, "index": count}
+            count = count + 1
             if not sentence:
                 continue
             prediction = self._subj_model.predict(
                 convert_text_into_vector_sequence(self._word_model, sentence))
             if prediction == is_subjective:
-                subjective_sentences.append(sentence)
+                subjective_sentences.append(res)
             else:
-                objective_sentences.append(sentence)
+                objective_sentences.append(res)
         return {'subjective': subjective_sentences, 'objective': objective_sentences}
 
     def __sanitize_text(self, text):
