@@ -1,30 +1,42 @@
 console.log("content loaded");
 
 
-let articles = document.querySelectorAll('article');
+let article = document.querySelectorAll('article');
 articleString = "";
-articles.forEach((data) => {
+article.forEach((data) => {
     console.log(data);
     articleString += data.outerHTML;
 });
 
-
-
-
 // fetch("http://localhost:5000");
-
 (async function(contents){
-    articles[0].querySelectorAll('a').forEach(e => {
-      e.style.background = 'red';
-    })
-    try {
-        console.error("--------------------------------error--------------------------------");
-        const data = await postData('http://localhost:5000', { data: contents });
-        console.log(data); // JSON-string from `response.json()` call
-      } catch (error) {
-        console.error("--------------------------------error--------------------------------");
-      }
-})(articleString);
+  article[0].querySelectorAll('a').forEach(e => {
+    e.classList.add('subjective--highlight');
+  })
+
+  try {
+      console.error("--------------------------------error--------------------------------");
+      const data = await postData('http://localhost:5000', { data: contents });
+      console.log(data); // JSON-string from `response.json()` call
+    } catch (error) {
+      console.error("--------------------------------error--------------------------------");
+    }
+})(article);
+
+// (async function(contents){
+//     article[0].querySelectorAll('div > div > div > div').forEach(e => {
+//       e.classList.add('objective--highlight');
+//     })
+
+//     try {
+//         console.error("--------------------------------error--------------------------------");
+//         const data = await postData('http://localhost:5000', { data: contents });
+//         console.log(data); // JSON-string from `response.json()` call
+//       } catch (error) {
+//         console.error("--------------------------------error--------------------------------");
+//       }
+// })(article);
+
   
 async function postData(url = '', data = {}) {
     // Default options are marked with *
