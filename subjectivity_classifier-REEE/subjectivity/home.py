@@ -1,10 +1,10 @@
 from flask import Flask, escape, request
-# from flask_cors import COR
+from flask_cors import CORS
 
 from zachsBaby import woot
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -22,6 +22,14 @@ def hello():
 
 @app.route('/test', methods=["GET", "POST"])
 def test():
+    text = "Donald Trump is the president. I HATE donald trump. Donald Trump is a nice guy. Donald trump can suck a dick."
+    res = woot(text)
+    return res
+    # return "Hello, {escape(name)}!"
+
+
+@app.route('/test', methods=["GET", "POST"])
+def demo():
     text = "Donald Trump is the president. I HATE donald trump. Donald Trump is a nice guy. Donald trump can suck a dick."
     res = woot(text)
     return res
