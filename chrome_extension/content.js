@@ -7,7 +7,8 @@ articles[0].querySelectorAll('p').forEach((data) => {
 // fetch("http://localhost:5000");
 
 (async function(contents){
-    contents[0].innerHTML = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
+    contents[2].innerHTML = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
+    contents[8].innerHTML = `This is me trying to <mark>whateer whatever whatever</mark> this and that something trying tom ake stuff up.`
     console.log(contents)
     console.log(contents.map(e => e.textContent))
     
