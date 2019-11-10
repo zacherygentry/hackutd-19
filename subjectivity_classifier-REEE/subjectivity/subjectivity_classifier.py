@@ -1,8 +1,8 @@
 from nltk.tokenize import sent_tokenize
 from gensim.models import KeyedVectors
 
-from subjectivity.model import SubjectivityPredictor
-from subjectivity.utils import is_subjective, convert_text_into_vector_sequence
+from model import SubjectivityPredictor
+from utils import is_subjective, convert_text_into_vector_sequence
 
 
 class SubjectivityClassifier(object):
@@ -25,7 +25,8 @@ class SubjectivityClassifier(object):
             sentence = self.__clean_sentence(sentence)
             if not sentence:
                 continue
-            prediction = self._subj_model.predict(convert_text_into_vector_sequence(self._word_model, sentence))
+            prediction = self._subj_model.predict(
+                convert_text_into_vector_sequence(self._word_model, sentence))
             if prediction == is_subjective:
                 subjective_sentences.append(sentence)
             else:
@@ -43,5 +44,6 @@ class SubjectivityClassifier(object):
 
     def __clean_sentence(self, text):
         text = text.replace('\n', '')
-        if text == '.': return ''
+        if text == '.':
+            return ''
         return text
