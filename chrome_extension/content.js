@@ -1,6 +1,6 @@
 let articles = document.querySelectorAll('article');
 paragraphs = [];
-articles[0].forEach((data) => {
+articles.forEach((data) => {
     paragraphs.push(data)
 });
 
