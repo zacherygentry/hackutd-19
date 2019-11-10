@@ -14,7 +14,7 @@ articles[0].querySelectorAll('p').forEach((data) => {
     
     try {
         console.error("--------------------------------error--------------------------------");
-        const data = await postData('http://localhost:5000', { data: contents.map(e => e.textContent.trim()) });
+        const data = await postData('http://localhost:5000', { data: contents.map(e => e.textContent) });
         console.log(data); // JSON-string from `response.json()` call
       } catch (error) {
         console.error("--------------------------------error--------------------------------");
