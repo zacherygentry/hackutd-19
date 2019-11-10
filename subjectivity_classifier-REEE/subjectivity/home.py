@@ -19,10 +19,11 @@ def hello():
         data = request.data
         my_json = data.decode('utf8')#.replace("'", '"')
         data = json.loads(my_json)
+        data = data["data"]
         # s = json.dumps(data, indent=4, sort_keys=True)
         # print(s)
         # TODO CALL ZACHS BABY
-        
+
 
     return data
     # return "Hello, {escape(name)}!"
