@@ -14,24 +14,25 @@ class ParseHtml:
         for p in self.soup.find_all('p'): #TODO get rid of the [4]
 
             p = self.modifyContent(p)
-            print(p)
 
     def fileWriter(self, data):
         with open('paragraphExample.txt', 'a') as file:
             file.write(data)
 
     def modifyContent(self, data):
-        color = "red"
-        # print("Str")
+        contents, color = self.callZach(data.string)
+
         # new_tag = self.new_soup.new_tag('div', id='file_history')
-        mark_tag = self.soup.new_tag('mark', class=color)
-        mark_tag.string = data.string
+        attributes = {'class': color}
+        mark_tag = self.soup.new_tag('mark', **attributes)
+        mark_tag.string = str(contents)
 
         print(mark_tag)        
         # return "<mark class=\""+ color +"\">" + str(data) + "</mark>"
 
     def callZach(self, data):
         # TODO
+        return data, "red"
 
 
 
