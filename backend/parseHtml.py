@@ -11,15 +11,27 @@ class ParseHtml:
         self.soup = BeautifulSoup(self.html_doc, "lxml")
 
     def generate(self):
-        for p in self.soup.find_all('p'):
-            self.fileWriter(p.get_text() + "\n")
-            print("[" + p.get_text() + "]")
+        for p in self.soup.find_all('p'): #TODO get rid of the [4]
+
+            p = self.modifyContent(p)
+            print(p)
 
     def fileWriter(self, data):
         with open('paragraphExample.txt', 'a') as file:
             file.write(data)
 
+    def modifyContent(self, data):
+        color = "red"
+        # print("Str")
+        # new_tag = self.new_soup.new_tag('div', id='file_history')
+        mark_tag = self.soup.new_tag('mark', class=color)
+        mark_tag.string = data.string
 
+        print(mark_tag)        
+        # return "<mark class=\""+ color +"\">" + str(data) + "</mark>"
+
+    def callZach(self, data):
+        # TODO
 
 
 
